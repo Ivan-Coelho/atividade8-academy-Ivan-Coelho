@@ -9,7 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "cypress-cucumbe-preprocessor":{
+  "cypress-cucumber-preprocessor":{
     "stepDefinitions": "cypress/support/steps/[filepart].step.js"
   },
 

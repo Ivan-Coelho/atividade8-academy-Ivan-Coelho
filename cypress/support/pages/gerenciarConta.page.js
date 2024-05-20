@@ -5,7 +5,8 @@ export default class GerenciarContaPage{
     inputFilmes = ('[placeholder="Buscar filmes"]');
     inputlNome = ('[placeholder="Nome"]');
     inputSenha = ('[placeholder="Senha"]');
-    inputConfirmarSenha = ('[placeholder="Confirmar senha"]');    
+    inputConfirmarSenha = ('[placeholder="Confirmar senha"]');
+    input   
     
     labelEmail = ('[placeholder="E-mail"]');
 
@@ -13,6 +14,9 @@ export default class GerenciarContaPage{
     buttonAlterarSenha = ('.account-password-button');    
     buttonSalvar = ('.account-save-button');    
     buttonCancelar = ('.account-password-button-cancel');
+
+    mensagem = ('div.modal-body p');
+    mensagemErro = ('.input-error')
 
     typeNome(nome){
         cy.get(this.inputlNome).clear().type(nome);
@@ -26,6 +30,10 @@ export default class GerenciarContaPage{
         cy.get(this.inputConfirmarSenha).type(confSenha);
     }
 
+    clickButtonAlterarSenha(){
+        cy.get(this.buttonAlterarSenha).click();
+    }
+    
     clickButtonSalvar(){
         cy.get(this.buttonSalvar).click();
     }

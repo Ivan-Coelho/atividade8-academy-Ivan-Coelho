@@ -1,4 +1,4 @@
-export default class LoginPage{
+export default class RegistroPage{
 
     linkPaginaFilmes = ('a[href="Filmes"]'); // não funciona    
     linkPaginaLogin = ('[href="/login"]');
@@ -10,6 +10,12 @@ export default class LoginPage{
     inputConfirmarSenha = ('[placeholder="Confirmar senha"]');
 
     buttonCadastrar = ('.account-save-button');
+
+    mensagemErro = ('.input-error')
+    mensagemSucesso = ('.error-message');
+
+    mensagemEmailjaCadastrado = ('.error-message');
+    buttonOk = ('.modal-actions button');
 
     typeNome(nome){
         cy.get(this.inputlNome).type(nome);

@@ -15,6 +15,6 @@ export default class PerfilPage{
     clickButtonlogout(){
         cy.get(this.linkLogout).click();
     }
-
+ 
 
 }
