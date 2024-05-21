@@ -13,6 +13,7 @@ export default class RegistroPage{
 
     mensagemErro = ('.input-error')
     mensagemSucesso = ('.error-message');
+    mensagemSucessoCadastro = ('div.modal-body h3')
 
     mensagemEmailjaCadastrado = ('.error-message');
     buttonOk = ('.modal-actions button');

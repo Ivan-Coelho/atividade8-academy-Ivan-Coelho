@@ -87,8 +87,7 @@ Then('o nome do usuário deverá estar visível', function(){
     cy.get('@usuario').then( function(user){
         let nome = user.name
         cy.get(paginaGerenciarConta.inputNome).invoke('val').should('be.equal', nome)
-    });
-    
+    });    
 })
 
 Then('o email do usuário deverá estar visível', function(){
@@ -111,14 +110,3 @@ Then('irei visualizar uma mensagem de sucesso', function(){
 Then('o nome do usuário será atualizado', function(){
     cy.get(paginaGerenciarConta.inputNome).invoke('val').should('be.equal', "Ivan Coelho")
 });
-
-
-
-        
-       
-
-    // Cenário: Usuário comum deve ter permissão para alterar sua senha
-    //     Quando solicitar alteração de senha
-    //     E informar a nova senha
-    //     E confimar a senha
-    

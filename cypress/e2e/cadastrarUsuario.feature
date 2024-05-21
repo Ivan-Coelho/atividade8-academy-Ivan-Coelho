@@ -61,16 +61,16 @@ Contexto: Usuário deve acessar a página
         E confirmar o Cadastro    
         Então irei visualizar uma mensagem de alerta "E-mail já cadastrado. Utilize outro e-mail"
 
-    # #talvez faça mais sentido apenas no teste de API
-    # @cadastrarUsuário @deletarUsuário 
-    # Cenário: Não deve ser possível registrar um usuário informando um email já cadastrado por não diferenciar case sensitive
-    #     Quando informar um nome "Ivan Coelho"
-    #     E informar um email case sensitive já em uso
-    #     E informar a senha "123456"
-    #     E confirmar a senha "123456"
-    #     E confirmar o Cadastro    
-    #     Então irei visualizar uma mensagem de alerta "E-mail já cadastrado. Utilize outro e-mail"
-    #     #BUG está cadastrando emails iguais se informar letras maiúsculas
+    #talvez faça mais sentido, apenas no teste de API
+    @cadastrarUsuário @deletarUsuário 
+    Cenário: Não deve ser possível registrar um usuário informando um email já cadastrado por não diferenciar case sensitive
+        Quando informar um nome "Ivan Coelho"
+        E informar um email case sensitive já em uso
+        E informar a senha "123456"
+        E confirmar a senha "123456"
+        E confirmar o Cadastro    
+        Então irei visualizar uma mensagem de alerta "E-mail já cadastrado. Utilize outro e-mail"
+        #BUG está cadastrando emails iguais se informar letras maiúsculas
 
     Esquema do Cenário: Não deve ser possível registrar um usuário informando um email mal formatado
         Quando informar um nome "Ivan Coelho"
@@ -90,7 +90,6 @@ Contexto: Usuário deve acessar a página
 
 
     Cenário: Não deve ser possível registrar um usuário informando uma senha com menos de 6 caracteres
-        # É interessante criar outro step de informar a senha para especificar o tamanho da senha?
         Quando informar um nome "Ivan Coelho"
         E informar um email válido
         E informar a senha "12345"
@@ -106,25 +105,24 @@ Contexto: Usuário deve acessar a página
         E confirmar o Cadastro
         Então irei visualizar uma mensagem de erro "A senha deve ter no máximo 12 dígitos." 
 
-    # Cenário: Não deve ser possível registrar um usuário informando um nome em branco
-    #     Quando informar um nome "        "
-    #     E informar um email válido
-    #     E informar a senha "123456"
-    #     E confirmar a senha "123456"
-    #     E confirmar o Cadastro
-    #     Então irei visualizar uma mensagem de alerta "Não foi possível cadastrar o usuário."
-    #     # BUG : talvez não deveria ser possível cadastrar dessa forma
+    Cenário: Não deve ser possível registrar um usuário informando um nome em branco
+        Quando informar um nome "        "
+        E informar um email válido
+        E informar a senha "123456"
+        E confirmar a senha "123456"
+        E confirmar o Cadastro
+        Então irei visualizar uma mensagem de alerta "Não foi possível cadastrar o usuário."
+        # BUG : talvez não deveria ser possível cadastrar dessa forma
 
-    # Cenário: Não deve ser possível registrar um usuário informando uma senha em branco
-    #     Quando informar um nome "Ivan Coelho"
-    #     E informar um email válido
-    #     E informar a senha "       "
-    #     E confirmar a senha "       "
-    #     E confirmar o Cadastro
-    #     Então irei visualizar uma mensagem de alerta "Não foi possível cadastrar o usuário."
-    #     # BUG : talvez não deveria ser possível cadastrar dessa forma
-
-    #Como deletar esses usuários?
+    Cenário: Não deve ser possível registrar um usuário informando uma senha em branco
+        Quando informar um nome "Ivan Coelho"
+        E informar um email válido
+        E informar a senha "       "
+        E confirmar a senha "       "
+        E confirmar o Cadastro
+        Então irei visualizar uma mensagem de alerta "Não foi possível cadastrar o usuário."
+        # BUG : talvez não deveria ser possível cadastrar dessa forma
+    
     Cenário: Registro de usuário de forma válida
         Quando informar um nome "Ivan Coelho"
         E informar um email válido
@@ -157,3 +155,26 @@ Contexto: Usuário deve acessar a página
         |0123456789AB|0123456789AB|
         |1234567@    |1234567@    |
         |1234abcD    |1234abcD    |
+
+    
+    @criarUsuarioComum @deletarUsuarios
+    Cenário: Deve existir usuários do tipo comum
+        Quando usuario do tipo "comum" logar no site
+        E acessar a página de gerenciamento de conta
+        Então irei visualizar que é do tipo "Comum"
+
+    
+    
+    @criarUsuarioCritico @deletarUsuarios
+    Cenário: Deve existir usuários do tipo crítico
+        Quando usuario do tipo "crítico" logar no site
+        E acessar a página de gerenciamento de conta
+        Então irei visualizar que é do tipo "Crítico(a)"
+    
+    
+    @criarUsuarioAdmin @deletarUsuarios
+    Cenário: Deve existir usuários do tipo admin
+        Quando usuario do tipo "admin" logar no site
+        E acessar a página de gerenciamento de conta
+        Então irei visualizar que é do tipo "Administrador"
+

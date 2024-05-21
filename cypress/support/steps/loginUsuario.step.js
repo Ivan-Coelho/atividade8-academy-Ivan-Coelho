@@ -77,8 +77,7 @@ Then('irei visualizar a mensagem de erro {string}', function(mensagem){
 Then('irei logar com sucesso', function(){
     cy.intercept('POST', 'https://raromdb-3c39614e42d4.herokuapp.com/api/auth/login').as('login')
 
-    cy.wait('@login')
-   
+    cy.wait('@login')   
 });
 
 Then('serei direcionado para pagina inicial', function(){
