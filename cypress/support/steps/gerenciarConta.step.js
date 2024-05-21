@@ -53,13 +53,13 @@ When('solicitar alteração de senha', function(){
     paginaGerenciarConta.clickButtonAlterarSenha();
 })
 
-When('informar a senha {string}', function(){
-    paginaGerenciarConta.typeSenha('123456');
+When('informar a senha {string}', function(senha){
+    paginaGerenciarConta.typeSenha(senha);
 });
 
 
-When('confirmar uma senha diferente {string}', function(){
-    paginaGerenciarConta.typeConfSenha('987456');
+When('confirmar a senha {string}', function(confSenha){
+    paginaGerenciarConta.typeConfSenha(confSenha);
 });
 
 When('salvar a operação', function(){
@@ -70,35 +70,55 @@ When('visualizar a página', function(){
 
 });
 
+When('alterar seu nome', function(){
+    paginaGerenciarConta.typeNome("Ivan Coelho")
+});
+
 Then('irei visualizar a mensagem de erro {string}', function(mensagem){
     cy.contains(paginaGerenciarConta.mensagemErro, mensagem).should('be.visible');
 });
 
-Then('o nome do usuário deverá estar visível', function(){
-    cy.contains(paginaGerenciarConta.inputlNome).should('be.visible');
+Then('irei visualizar a mensagem de alerta {string}', function(mensagem){
+    cy.contains(paginaGerenciarConta.mensagem, mensagem).should('be.visible');
+});
+
+Then('o nome do usuário deverá estar visível', function(){    
 
     cy.get('@usuario').then( function(user){
-
         let nome = user.name
-        cy.get(paginaGerenciarConta.inputlNome).invoke('val').should('be.equal', nome)
-
+        cy.get(paginaGerenciarConta.inputNome).invoke('val').should('be.equal', nome)
     });
     
 })
 
 Then('o email do usuário deverá estar visível', function(){
-    cy.contains(paginaGerenciarConta.labelEmail).should('be.visible');
-
-    cy.get('@usuario').then( function(user){
-
-        let nome = user.email
-        cy.get(paginaGerenciarConta.labelEmail).invoke('val').should('be.equal', email)
-
-    });
     
+    cy.get('@usuario').then( function(user){
+        let email = user.email
+        cy.get(paginaGerenciarConta.labelEmail).invoke('val').should('be.equal', email)
+    });    
 })
 
 Then('o tipo de usuário deverá estar visível', function(){
-    cy.contains(paginaGerenciarConta.)
+    cy.contains(paginaGerenciarConta.inputTipoUsuario, 'Comum')
 });
-// E o tipo de usuário deverá estar visível
+
+Then('irei visualizar uma mensagem de sucesso', function(){
+    cy.contains(paginaGerenciarConta.mensagemSucesso, "Sucesso")
+    cy.contains(paginaGerenciarConta.mensagem, "Informações atualizadas!")
+})
+
+Then('o nome do usuário será atualizado', function(){
+    cy.get(paginaGerenciarConta.inputNome).invoke('val').should('be.equal', "Ivan Coelho")
+});
+
+
+
+        
+       
+
+    // Cenário: Usuário comum deve ter permissão para alterar sua senha
+    //     Quando solicitar alteração de senha
+    //     E informar a nova senha
+    //     E confimar a senha
+    

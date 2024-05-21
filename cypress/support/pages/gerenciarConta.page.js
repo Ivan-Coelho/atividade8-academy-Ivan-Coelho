@@ -2,11 +2,13 @@ export default class GerenciarContaPage{
     linkPaginaFilmes = ('a[href="Filmes"]'); // não funciona
     linkPaginaPerfil = ('a[href="/profile"]');
     
+    //inputNome = (':nth-child(2) > .profile-input')
     inputFilmes = ('[placeholder="Buscar filmes"]');
-    inputlNome = ('[placeholder="Nome"]');
+    inputNome = ('[placeholder="Nome"]');
     inputSenha = ('[placeholder="Senha"]');
     inputConfirmarSenha = ('[placeholder="Confirmar senha"]');
-    input   
+    inputTipoUsuario = (':nth-child(3) > .profile-input')
+       
     
     labelEmail = ('[placeholder="E-mail"]');
 
@@ -17,9 +19,10 @@ export default class GerenciarContaPage{
 
     mensagem = ('div.modal-body p');
     mensagemErro = ('.input-error')
-
+    mensagemSucesso = ('div.modal-body h3')
+    
     typeNome(nome){
-        cy.get(this.inputlNome).clear().type(nome);
+        cy.get(this.inputNome).clear().type(nome);
     }
 
     typeSenha(senha){
